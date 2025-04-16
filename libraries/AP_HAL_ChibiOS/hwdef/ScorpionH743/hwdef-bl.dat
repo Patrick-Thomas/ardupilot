@@ -1,0 +1,59 @@
+# hw definition file for processing by chibios_pins.py
+
+# MCU class and specific type
+MCU STM32H7xx STM32H743xx
+
+# board ID for firmware load
+APJ_BOARD_ID 6543
+
+# crystal frequency, setup to use external oscillator
+OSCILLATOR_HZ 8000000
+
+FLASH_SIZE_KB 2048
+
+# bootloader takes first sector
+FLASH_RESERVE_START_KB 0
+
+# the location where the bootloader will put the firmware
+# the H743 has 128k sectors
+FLASH_BOOTLOADER_LOAD_KB 128
+
+# ChibiOS system timer
+STM32_ST_USE_TIMER 5
+
+# LED
+PA3 LED_BOOTLOADER OUTPUT OPENDRAIN HIGH
+PA2 LED_ACTIVITY OUTPUT OPENDRAIN HIGH
+PA0 LED_RED OUTPUT OPENDRAIN HIGH
+define HAL_LED_ON 1
+
+# order of UARTs (and USB)
+SERIAL_ORDER OTG1 UART7
+
+# UART7 (spare, debug)
+PE7 UART7_RX UART7
+PE8 UART7_TX UART7
+
+PA11 OTG_FS_DM OTG1
+PA12 OTG_FS_DP OTG1
+
+PA13 JTMS-SWDIO SWD
+PA14 JTCK-SWCLK SWD
+
+define HAL_USE_EMPTY_STORAGE 1
+define HAL_STORAGE_SIZE 32768
+
+define BOOTLOADER_DEBUG SD7
+
+# CS pins to ensure they are high
+PE15 IMU1_CS CS
+PC13 AT7456_CS CS
+
+
+
+
+
+
+
+
+
